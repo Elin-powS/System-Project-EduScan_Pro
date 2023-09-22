@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "340823815855",
+    "firebase_url": "https://eduscan-pro-default-rtdb.firebaseio.com",
+    "project_id": "eduscan-pro",
+    "storage_bucket": "eduscan-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340823815855:android:46ca5f873a99a4eaa0c65a",
+        "android_client_info": {
+          "package_name": "com.example.eduscan_pro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6KTegE4-GSCtDZP3GXhzmbu_wuSQOPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340823815855:android:2111bfb790bd2853a0c65a",
+        "android_client_info": {
+          "package_name": "com.example.eduscanpro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6KTegE4-GSCtDZP3GXhzmbu_wuSQOPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
