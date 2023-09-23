@@ -55,15 +55,6 @@ public class Sign_Up extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         confirm_password = (EditText) findViewById(R.id.confirm_password);
 
-        Exit=(TextView) findViewById(R.id.exit);
-        Exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(Sign_Up.this, "Exit", Toast.LENGTH_SHORT).show();
-                Intent intent= new Intent(Sign_Up.this,Log_In.class);
-                startActivity(intent);
-            }
-        });
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 

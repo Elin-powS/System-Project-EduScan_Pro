@@ -47,15 +47,7 @@ public class Forget_Password extends AppCompatActivity {
             }
         });
 
-        Exit=(TextView) findViewById(R.id.exit);
-        Exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(Forget_Password.this, "Exit", Toast.LENGTH_SHORT).show();
-                Intent intent= new Intent(Forget_Password.this,Log_In.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     private void reset_password() {
@@ -67,7 +59,7 @@ public class Forget_Password extends AppCompatActivity {
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
-            email.setError("Please Provide valid email!");
+            email.setError("Please provide valid email!");
             email.requestFocus();
             return;
         }
