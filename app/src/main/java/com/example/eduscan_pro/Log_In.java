@@ -121,10 +121,16 @@ public class Log_In extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(Log_In.this, "Successfully LogIn", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Log_In.this,MainActivity.class));
-                    finish();
+                    if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(Log_In.this, "Successfully LogIn", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Log_In.this,MainActivity.class));
+                        finish();
+                    }
+                    else {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(Log_In.this, "Please Verify your Email ID!", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
                     progressBar.setVisibility(View.GONE);
