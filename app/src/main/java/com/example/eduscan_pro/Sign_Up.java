@@ -130,9 +130,21 @@ public class Sign_Up extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            String uid = user.getUid();
-                            updateUi(uid, Email);
+                            firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                                        String uid = user.getUid();
+                                        updateUi(uid, Email);
+                                    }
+                                    else {
+                                        Toast.makeText(Sign_Up.this, "Sign In Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+
                         } else {
                             Toast.makeText(Sign_Up.this, "Sign In Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
@@ -161,10 +173,9 @@ public class Sign_Up extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
 
                         if (task.isSuccessful()) {
-
                             progressBar.setVisibility(View.GONE);
                             Toast.makeText(Sign_Up.this, "Sign Up Successfully Done", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Sign_Up.this, MainActivity.class));
+                            startActivity(new Intent(Sign_Up.this, Log_In.class));
                             finish();
                         }else {
                             progressBar.setVisibility(View.GONE);
