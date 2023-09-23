@@ -2,6 +2,7 @@ package com.example.eduscan_pro;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -26,18 +27,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Calendar;
 import java.util.HashMap;
 
+/*
+* Sign up activity */
 public class Sign_Up extends AppCompatActivity {
 
     private EditText Fullname, Email,username, password, confirm_password,University,Department;
     private Button B3;
-    private DatePickerDialog picker;
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressBar;
     private TextView Exit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        getWindow().setStatusBarColor(ContextCompat.getColor(Sign_Up.this,R.color.teal_700));
+
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         Fullname = (EditText) findViewById(R.id.Fullname);
@@ -127,14 +134,14 @@ public class Sign_Up extends AppCompatActivity {
     }
 
     private void Sign_In(String Email, String Password) {
-        firebaseAuth.createUserWithEmailAndPassword(Email, Password)
+        firebaseAuth.createUserWithEmailAndPassword(Email,Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             String uid = user.getUid();
-                            updateUi( uid, Email);
+                            updateUi(uid, Email);
                         } else {
                             Toast.makeText(Sign_Up.this, "Sign In Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
@@ -156,7 +163,7 @@ public class Sign_Up extends AppCompatActivity {
 
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Department Manager");
-        reference.child(uid).child("user information")
+        reference.child(uid).child("Manager's information")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -166,7 +173,7 @@ public class Sign_Up extends AppCompatActivity {
 
                             progressBar.setVisibility(View.GONE);
                             Toast.makeText(Sign_Up.this, "Sign Up Successfully Done", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Sign_Up.this, Log_In.class));
+                            startActivity(new Intent(Sign_Up.this, MainActivity.class));
                             finish();
                         }else {
                             progressBar.setVisibility(View.GONE);

@@ -175,7 +175,7 @@
             android:drawablePadding="7dp"
             android:hint="University"
             android:paddingLeft="10dp"
-            android:inputType="phone"
+            android:inputType="text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"
