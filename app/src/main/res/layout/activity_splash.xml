@@ -16,4 +16,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/splash" />
+
+    <ProgressBar
+        android:id="@+id/progressBarId"
+        style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+        android:layout_width="324dp"
+        android:layout_height="70dp"
+        android:layout_margin="30dp"
+        android:layout_marginStart="32dp"
+
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:progressBackgroundTint="#f9f9f9"
+        android:progressTint="#02b3b9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.748" />
 </androidx.constraintlayout.widget.ConstraintLayout>

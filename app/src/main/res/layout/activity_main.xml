@@ -7,6 +7,7 @@
     android:id="@+id/drawer_layout"
     tools:context=".MainActivity">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -28,8 +29,8 @@
                 android:layout_height="43dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:paddingLeft="10dp"
                 android:gravity="center_vertical"
+                android:paddingLeft="10dp"
                 android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:textSize="22sp"
@@ -37,56 +38,91 @@
 
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/progressBar"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_centerVertical="true"
-            android:foregroundGravity="center" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="300dp"
-
-            android:foregroundGravity="center">
+            android:layout_height="500dp"
+            android:layout_below="@+id/appBar"
+            android:layout_marginTop="26dp">
 
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <EditText
+                android:id="@+id/Year"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_above="@+id/Semester"
+                android:background="@android:drawable/gallery_thumb"
+                android:drawableLeft="@android:drawable/stat_notify_chat"
+                android:drawablePadding="10dp"
+                android:hint="Year"
+                android:inputType="textEmailAddress"
+                android:maxLength="32"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.404" />
+
+            <EditText
+                android:id="@+id/Semester"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="32dp"
+                android:background="@android:drawable/gallery_thumb"
+                android:drawableLeft="@android:drawable/stat_notify_chat"
+                android:drawablePadding="10dp"
+                android:hint="Semester"
+                android:inputType="textEmailAddress"
+                android:maxLength="32"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Year" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/appCompatButton2"
+                android:layout_width="154dp"
+                android:layout_height="63dp"
+                android:layout_marginTop="30dp"
+                android:text="Insert"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Semester"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/imageMenu"
             android:layout_width="40dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
-        app:menu="@menu/navigation_menu"
-        android:src="@drawable/baseline_menu_24"
-        android:paddingLeft="5dp"
-        app:tint="#FFFFFF" />
+            android:paddingLeft="5dp"
+            android:src="@drawable/baseline_menu_24"
+            app:menu="@menu/navigation_menu"
+            app:tint="#FFFFFF" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/insert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="87dp"
+            android:layout_height="100dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="21dp"
             android:layout_marginTop="21dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginRight="160dp"
+            android:layout_marginEnd="174dp"
+            android:layout_marginRight="174dp"
             android:layout_marginBottom="29dp"
             android:backgroundTint="@color/teal_700"
-            android:src="@drawable/baseline_camera_alt_24"
-            />
+            android:src="@drawable/baseline_camera_alt_24" />
     </RelativeLayout>
-
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_View"

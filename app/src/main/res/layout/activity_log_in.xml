@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Log_In"
-    android:fillViewport="true"
-    android:background="@color/black">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -89,7 +88,7 @@
             android:id="@+id/textView3"
             android:layout_width="171dp"
             android:layout_height="24dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:orientation="vertical"
             android:text="Don't have an account?"
@@ -97,8 +96,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/B1"
-            app:layout_constraintVertical_bias="0.129" />
+            app:layout_constraintTop_toBottomOf="@+id/forget_password"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/password"
@@ -153,7 +152,6 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
             app:layout_constraintVertical_bias="0.0" />
