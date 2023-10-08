@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -127,8 +126,12 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester").push()
-                .s
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & Second Semester");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & Second Semester");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester");
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & Second Semester");
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & First Semester");
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & Second Semester");
