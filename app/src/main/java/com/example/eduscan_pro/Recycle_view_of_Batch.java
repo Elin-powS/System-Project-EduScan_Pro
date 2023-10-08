@@ -125,12 +125,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & Second Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & Second Semester");
-
+        
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester");
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & Second Semester");
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & First Semester");
