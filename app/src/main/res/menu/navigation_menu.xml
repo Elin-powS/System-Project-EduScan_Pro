@@ -17,8 +17,6 @@
                     android:icon="@drawable/baseline_menu_24"
                     android:title="Profile" />
 
-
-
             </menu>
 
         </item>

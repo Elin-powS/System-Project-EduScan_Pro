@@ -1,9 +1,5 @@
 package com.example.eduscan_pro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -13,6 +9,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -124,7 +124,7 @@ public class Log_In extends AppCompatActivity {
                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(Log_In.this, "Successfully LogIn", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Log_In.this,MainActivity.class));
+                        startActivity(new Intent(Log_In.this,Recycle_view_of_Batch.class));
                         finish();
                     }
                     else {

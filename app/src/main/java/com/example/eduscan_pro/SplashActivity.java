@@ -1,13 +1,11 @@
 package com.example.eduscan_pro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,7 +52,7 @@ public class SplashActivity extends AppCompatActivity {
 
         if (firebaseAuth != null )
         {
-            Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this,Recycle_view_of_Batch.class);
             startActivity(intent);
             finish();
         }

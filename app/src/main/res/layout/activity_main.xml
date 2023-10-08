@@ -44,60 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/appBar"
-            android:layout_marginTop="11dp">
-
-
-            <EditText
-                android:id="@+id/Year"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_above="@+id/Semester"
-                android:background="@android:drawable/gallery_thumb"
-                android:drawableLeft="@android:drawable/stat_notify_chat"
-                android:drawablePadding="10dp"
-                android:hint="Year"
-                android:inputType="textEmailAddress"
-                android:maxLength="32"
-                android:padding="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <EditText
-                android:id="@+id/Semester"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="8dp"
-                android:background="@android:drawable/gallery_thumb"
-                android:drawableLeft="@android:drawable/stat_notify_chat"
-                android:drawablePadding="10dp"
-                android:hint="Semester"
-                android:inputType="textEmailAddress"
-                android:maxLength="32"
-                android:padding="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Year" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton2"
-                android:layout_width="154dp"
-                android:layout_height="63dp"
-                android:layout_marginTop="10dp"
-                android:text="Insert"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Semester"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="11dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

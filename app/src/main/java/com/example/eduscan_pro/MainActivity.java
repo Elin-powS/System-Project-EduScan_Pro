@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                 } else if (item.getItemId() ==  R.id.m_Profile) {
                     makeText(MainActivity.this, "Personal Information", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(MainActivity.this,MainActivity.class) ;
+                    intent = new Intent(MainActivity.this,Recycle_view_of_Batch.class) ;
                     startActivity(intent);
 
                 }
