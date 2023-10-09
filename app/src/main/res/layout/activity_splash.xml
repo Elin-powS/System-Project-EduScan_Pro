@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-<<<<<<< HEAD
-    >
-
+    tools:context=".SplashActivity">
     <TextView
         android:layout_width="277dp"
         android:layout_height="52dp"
@@ -20,9 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.878" />
-=======
-    android:background="#62BBF6">
->>>>>>> eb26df497fb13cb2d1c460eeddf7592e29444aee
 
     <ImageView
         android:id="@+id/imageView4"
@@ -32,12 +26,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
         app:srcCompat="@drawable/logo" />
-=======
-        app:layout_constraintVertical_bias="0.389"
-        app:srcCompat="@drawable/sp" />
->>>>>>> eb26df497fb13cb2d1c460eeddf7592e29444aee
+
 
     <ProgressBar
         android:id="@+id/progressBarId"

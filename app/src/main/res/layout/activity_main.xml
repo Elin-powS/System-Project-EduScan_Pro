@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/showdata"
-                    android:background="#5BB1F3"/>
+                    />
 
 
             </androidx.cardview.widget.CardView>

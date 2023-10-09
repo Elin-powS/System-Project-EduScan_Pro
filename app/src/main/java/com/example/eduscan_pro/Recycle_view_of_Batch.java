@@ -22,12 +22,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class Recycle_view_of_Batch extends AppCompatActivity {
 
@@ -44,6 +48,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FloatingActionButton add_semester;
 
+    int check=0,x=0;
     EditText Degree,Year,Semester;
     String degree,year,semester;
 
@@ -123,28 +128,10 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
-<<<<<<< HEAD
-
-        //databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester");
-        //databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & Second Semester");
+        Auto_Semester_Add();
 
 
-=======
->>>>>>> 210d750cbf73bd8acc20a3955bfd71ea6c417662
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & Second Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & First Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & Second Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Third Year & First Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Third Year & Second Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Fourth Year & First Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Fourth Year & Second Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("MSC").child("First Year & First Semester");
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child("MSC").child("First Year & Second Semester");
-
-
-        add_semester = findViewById(R.id.Add_Semester);
+             add_semester = findViewById(R.id.Add_Semester);
         add_semester.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,11 +148,11 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
+                        x=1;
+
                         degree = Degree.getText().toString().trim();
                         year = Year.getText().toString().trim();
                         semester = Semester.getText().toString().trim();
-
-                        int x=1;
 
                         if (degree.isEmpty()) {
                             Degree.setError("Required!");
@@ -221,7 +208,217 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
     private  void     Insert_Semester(){
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information").child(degree).child( year + " & " + semester);
+
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("Degree",degree.trim());
+        map.put("Year",year.trim());
+        map.put("Semester",semester.trim());
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child(degree).child( year + " & " + semester).push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()) {
+
+                            Toast.makeText(Recycle_view_of_Batch.this, "New Semester adding Successfully Done.", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Recycle_view_of_Batch.this, Recycle_view_of_Batch.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(Recycle_view_of_Batch.this, "New Semester adding failed, Try again!!", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+    }
+
+    private  void Auto_Semester_Add(){
+
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("Degree","BSC");
+        map.put("Year","First Year");
+        map.put("Semester","First Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+              databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+
+        map.put("Degree","BSC");
+        map.put("Year","First Year");
+        map.put("Semester","Second Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year Second Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+        map.put("Degree","BSC");
+        map.put("Year","Second Year");
+        map.put("Semester","First Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & First Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+
+        map.put("Degree","BSC");
+        map.put("Year","Second Year");
+        map.put("Semester","Second Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & Second Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+
+        map.put("Degree","BSC");
+        map.put("Year","Third Year");
+        map.put("Semester","First Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Third Year & First Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+
+        map.put("Degree","BSC");
+        map.put("Year","Third Year");
+        map.put("Semester","Second Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Third Year & Second Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+        map.put("Degree","BSC");
+        map.put("Year","Fourth Year");
+        map.put("Semester","First Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Fourth Year & First Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+        map.put("Degree","BSC");
+        map.put("Year","Fourth Year");
+        map.put("Semester","Second Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Fourth Year & Second Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+        map.put("Degree","MSC");
+        map.put("Year","First Year");
+        map.put("Semester","First Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("MSC").child("First Year & First Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+        map.put("Degree","MSC");
+        map.put("Year","First Year");
+        map.put("Semester","Second Semester");
+
+        firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("MSC").child("First Year & Second Semester").push()
+                .setValue(map)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!(task.isSuccessful())) {
+                            check= 1;
+                        }
+                    }
+                });
+
+        if(check==1){
+            Toast.makeText(Recycle_view_of_Batch.this, "Failed to show semester! Please check your credentials.", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 }
