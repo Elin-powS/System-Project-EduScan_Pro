@@ -60,15 +60,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="396dp"
-            android:layout_height="361dp"
+            android:layout_width="402dp"
+            android:layout_height="617dp"
             android:layout_below="@+id/appBar"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="26dp"
             android:layout_marginRight="10dp"
 
-            android:layout_marginBottom="306dp"
+            android:layout_marginBottom="31dp"
             android:foregroundGravity="center">
 
         </androidx.recyclerview.widget.RecyclerView>
