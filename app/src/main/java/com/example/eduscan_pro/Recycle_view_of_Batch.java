@@ -28,9 +28,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Recycle_view_of_Batch extends AppCompatActivity {
@@ -48,6 +52,8 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FloatingActionButton add_semester;
 
+    semester_model_Adapter show_adapter;
+    ArrayList<semester_model> list;
     int check=0,x=0;
     EditText Degree,Year,Semester;
     String degree,year,semester;
@@ -125,10 +131,58 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
 
 
+        Auto_Semester_Add();
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-        Auto_Semester_Add();
+
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information");
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        list = new ArrayList<>();
+        show_adapter = new semester_model_Adapter(this,list);
+        recyclerView.setAdapter(show_adapter);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    System.out.println("Hello1");
+                    for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        System.out.println("Hello2");
+                        for(DataSnapshot dataSnapshot2 : dataSnapshot1.getChildren()) {
+                        String child = dataSnapshot2.getKey();
+                        if(child.equals("Dummy Data")) {
+                            semester_model user = dataSnapshot2.getValue(semester_model.class);
+                            //user.setKey(dataSnapshot2.getKey());
+                            list.add(user);
+                            progressBar.setVisibility(View.GONE);
+                            System.out.println("");
+                        }
+                        }
+                    }
+                }
+
+                show_adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+
 
 
              add_semester = findViewById(R.id.Add_Semester);
@@ -190,20 +244,6 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
         });
 
 
-
-
-        /*recyclerView.setHasFixedSize(true);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-*/
-
-
-       /* list = new ArrayList<>();
-        show_adapter = new health_info_Adapter(this,list);
-        recyclerView.setAdapter(show_adapter);*/
-
-
-
     }
 
     private  void     Insert_Semester(){
@@ -216,7 +256,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
         map.put("Semester",semester.trim());
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child(degree).child( year + " & " + semester).push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child(degree).child( year + " & " + semester).child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -237,6 +277,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private  void Auto_Semester_Add(){
 
         HashMap<String, Object> map = new HashMap<>();
@@ -247,7 +288,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-              databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester").push()
+              databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year & First Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -265,7 +306,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year Second Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("First Year Second Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -282,7 +323,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & First Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & First Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -300,7 +341,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & Second Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Second Year & Second Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -318,7 +359,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Third Year & First Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Third Year & First Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -336,7 +377,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Third Year & Second Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Third Year & Second Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -353,7 +394,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Fourth Year & First Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Fourth Year & First Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -370,7 +411,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Fourth Year & Second Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("BSC").child("Fourth Year & Second Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -387,7 +428,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("MSC").child("First Year & First Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("MSC").child("First Year & First Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -404,7 +445,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager");
-        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("MSC").child("First Year & Second Semester").push()
+        databaseReference.child(firebaseuser.getUid()).child("Semester Information").child("MSC").child("First Year & Second Semester").child("Dummy Data")
                 .setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

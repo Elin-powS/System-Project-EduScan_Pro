@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="130dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/teal_700"
+        app:cardCornerRadius="13dp"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:id="@+id/vehicle_info"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/teal_700"
-            android:gravity="center_vertical"
-            >
+            android:id="@+id/semester_info"
+            android:layout_width="400dp"
+            android:layout_height="120dp"
+            android:gravity="center_vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="303dp"
+                android:layout_height="93dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/vehicle_size"
+                    android:id="@+id/Degree"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="52dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/Semester"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
                     android:gravity="center_vertical"
                     android:textColor="@color/white"
                     android:textSize="17dp"
@@ -35,8 +46,14 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/baseline_more_vert_24"
+                android:gravity="center" />
 
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 
