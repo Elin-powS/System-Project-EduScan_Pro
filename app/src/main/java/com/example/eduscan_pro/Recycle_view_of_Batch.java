@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -56,6 +57,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
     ArrayList<semester_model> list;
     int check=0,x=0;
     EditText Degree,Year,Semester;
+    TextView Tittle_add_semester;
     String degree,year,semester;
 
     @SuppressLint("MissingInflatedId")
@@ -100,7 +102,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                 } else if (item.getItemId() ==  R.id.m_Profile_Recycle) {
                     makeText(Recycle_view_of_Batch.this, "Personal Information", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(Recycle_view_of_Batch.this,MainActivity.class) ;
+                    intent = new Intent(Recycle_view_of_Batch.this,Recycle_view_of_Batch.class) ;
                     startActivity(intent);
 
                 }
@@ -152,9 +154,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    System.out.println("Hello1");
                     for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                        System.out.println("Hello2");
                         for(DataSnapshot dataSnapshot2 : dataSnapshot1.getChildren()) {
                         String child = dataSnapshot2.getKey();
                         if(child.equals("Dummy Data")) {
@@ -179,6 +179,17 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
         });
 
 
+        semester_model_Adapter.setClickListener(new semester_model_Adapter.ClickListener(){
+            @Override
+            public View.OnClickListener onItemClick(int position, View view) {
+
+                Toast.makeText(Recycle_view_of_Batch.this, "Semester Page", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Recycle_view_of_Batch.this, MainActivity.class);
+                startActivity(intent);
+                //intent.putExtra("Vehicle_Size",arrContact_model.get(position).vehicle_siz);intent.putExtra("Vehicle",arrContact_model.get(position).vehicle_nam);
+                return null;
+            }
+        });
 
 
 
@@ -195,7 +206,8 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
                 Degree =(EditText) dialog.findViewById(R.id.degree);
                 Year =(EditText) dialog.findViewById(R.id.year);
                 Semester =(EditText)dialog.findViewById(R.id.semester);
-
+                Tittle_add_semester = (TextView)dialog.findViewById(R.id.add_edit_semester);
+                Tittle_add_semester.setText("Enter New Semester");
                 Button insert_semester = dialog.findViewById(R.id.button_insert);
 
                 insert_semester.setOnClickListener(new View.OnClickListener() {
@@ -242,6 +254,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
             }
         });
+
 
 
     }

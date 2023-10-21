@@ -60,15 +60,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="402dp"
-            android:layout_height="617dp"
+            android:layout_width="401dp"
+            android:layout_height="609dp"
             android:layout_below="@+id/appBar"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="26dp"
             android:layout_marginRight="10dp"
 
-            android:layout_marginBottom="31dp"
+            android:layout_marginBottom="40dp"
             android:foregroundGravity="center">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -81,10 +81,12 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="21dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginBottom="24dp"
+
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginBottom="9dp"
             android:backgroundTint="@color/teal_700"
+            android:foregroundGravity="center"
             android:src="@drawable/baseline_add_24" />
     </RelativeLayout>
 
