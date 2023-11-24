@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (item.getItemId() ==  R.id.m_About_App) {
                     makeText(MainActivity.this, "About App", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(MainActivity.this,MainActivity.class) ;
+                    intent = new Intent(MainActivity.this, Features.class);
                     startActivity(intent);
                 } else if ( item.getItemId() ==  R.id.mlog_out) {
                     firebaseAuth.signOut();
