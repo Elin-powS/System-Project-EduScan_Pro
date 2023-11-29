@@ -25,6 +25,9 @@ public class Features extends AppCompatActivity {
         setSingleEvent(gridLayout);
     }
 
+    ///feature activity
+    //knvompvmew
+
     private void setSingleEvent(GridLayout gridLayout) {
         for(int i=0 ; i<gridLayout.getChildCount();i++){
             CardView cardView = (CardView) gridLayout.getChildAt(i);
