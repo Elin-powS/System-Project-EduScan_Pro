@@ -1,7 +1,7 @@
 package com.example.eduscan_pro;
 
 public class semester_model {
-    String Degree ,Year,Semester,key,UserID;
+    String Degree ,Year,Semester,key,UserID,imageUI;
 
     public String getdegree(){ return Degree;}
     public String getyear(){ return Year;}
@@ -10,8 +10,10 @@ public class semester_model {
 
         return getyear() + " & "+ getsemester();
     }
+    public String getImageUI(){
+        return  imageUI;
 
-
+    }
     public String getUserID() {
         return UserID;
     }

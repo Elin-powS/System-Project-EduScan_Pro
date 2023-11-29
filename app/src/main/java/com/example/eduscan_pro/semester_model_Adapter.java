@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,10 +37,11 @@ public class semester_model_Adapter extends RecyclerView.Adapter<semester_model_
 
     ArrayList<semester_model> list;
 
-    String degree_del_or_edit, semester_del_or_edit, Edit_degree, Edit_year, Edit_semester;
+    String degree_del_or_edit, semester_del_or_edit, Edit_degree, Edit_year, Edit_semester,image_UI;
     Button Edit_semester_info;
     EditText Degree, Year, Semester;
     TextView Tittle_edit_semester;
+    String imageuri;
     int x = 0;
 
     public semester_model_Adapter(Context context, ArrayList<semester_model> list) {
@@ -72,6 +74,8 @@ public class semester_model_Adapter extends RecyclerView.Adapter<semester_model_
 
         holder.degree.setText(user.getdegree());
         holder.semester.setText(user.getBatch());
+        imageuri = user.getImageUI();
+
 
         degree_del_or_edit = user.getdegree();
         semester_del_or_edit = user.getBatch();
@@ -96,6 +100,7 @@ public class semester_model_Adapter extends RecyclerView.Adapter<semester_model_
 
         TextView degree,semester;
         ImageButton imageButton;
+        ImageView imageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -103,6 +108,8 @@ public class semester_model_Adapter extends RecyclerView.Adapter<semester_model_
             degree = itemView.findViewById(R.id.Degree);
             semester = itemView.findViewById(R.id.Semester);
             imageButton = itemView.findViewById(R.id.option);
+            imageView = itemView.findViewById(R.id.Recycle_card_image);
+
 
             imageButton.setOnClickListener(this);
 

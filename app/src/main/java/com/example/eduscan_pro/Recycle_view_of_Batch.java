@@ -49,7 +49,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
     private FirebaseUser firebaseuser;
     private ProgressBar progressBar;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databaseReference2;
     private FirebaseAuth firebaseAuth;
     private FloatingActionButton add_semester;
 
@@ -108,7 +108,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
                 }
                 else if (item.getItemId() ==  R.id.m_About_App_Recycle) {
                     makeText(Recycle_view_of_Batch.this, "About App", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(Recycle_view_of_Batch.this,Recycle_view_of_Batch.class) ;
+                    intent = new Intent(Recycle_view_of_Batch.this,MainActivity.class) ;
                     startActivity(intent);
                 } else if ( item.getItemId() ==  R.id.mlog_out_recycle) {
                     firebaseAuth.signOut();
@@ -141,7 +141,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Department Manager").child(firebaseuser.getUid()).child("Semester Information");
-
+        //databaseReference2 = FirebaseDatabase.getInstance().getReference("Background Image");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -159,10 +159,8 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
                         String child = dataSnapshot2.getKey();
                         if(child.equals("Dummy Data")) {
                             semester_model user = dataSnapshot2.getValue(semester_model.class);
-                            //user.setKey(dataSnapshot2.getKey());
                             list.add(user);
                             progressBar.setVisibility(View.GONE);
-                            System.out.println("");
                         }
                         }
                     }
@@ -177,14 +175,30 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
 
             }
         });
+    /*
+            databaseReference2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        semester_model user = dataSnapshot.getValue(semester_model.class);
+                        list.add(user);
+                    }
 
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+*/
         semester_model_Adapter.setClickListener(new semester_model_Adapter.ClickListener(){
             @Override
             public View.OnClickListener onItemClick(int position, View view) {
 
                 Toast.makeText(Recycle_view_of_Batch.this, "Semester Page", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Recycle_view_of_Batch.this, MainActivity.class);
+                Intent intent = new Intent(Recycle_view_of_Batch.this, Features.class);
                 startActivity(intent);
                 //intent.putExtra("Vehicle_Size",arrContact_model.get(position).vehicle_siz);intent.putExtra("Vehicle",arrContact_model.get(position).vehicle_nam);
                 return null;

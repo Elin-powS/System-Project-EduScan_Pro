@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EduScan_Pro"
         tools:targetApi="31">
         <activity
+            android:name=".Word_File_Creation"
+            android:exported="false" />
+        <activity
             android:name=".Features"
             android:exported="false" />
         <activity

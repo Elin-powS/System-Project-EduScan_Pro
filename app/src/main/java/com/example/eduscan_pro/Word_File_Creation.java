@@ -40,8 +40,7 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 import java.io.IOException;
 
-
-public class MainActivity extends AppCompatActivity {
+public class Word_File_Creation extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -55,12 +54,13 @@ public class MainActivity extends AppCompatActivity {
     TextRecognizer textRecognizer;
     private FirebaseAuth firebaseAuth;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_word_file_creation);
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.teal_700));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Word_File_Creation.this,R.color.teal_700));
 
         //recyclerView = findViewById(R.id.recyclerView);
         //recyclerView.setLayoutManager(new LinearLayoutManager((this)));
@@ -84,14 +84,14 @@ public class MainActivity extends AppCompatActivity {
                 String text = recogText.getText().toString();
 
                 if(text.isEmpty()){
-                    Toast.makeText(MainActivity.this,"There is no Text to Copy!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Word_File_Creation.this,"There is no Text to Copy!",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    ClipboardManager clipboardManager = (ClipboardManager) getSystemService(MainActivity.this.CLIPBOARD_SERVICE);
+                    ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Word_File_Creation.this.CLIPBOARD_SERVICE);
                     ClipData clipData = ClipData.newPlainText("Data",recogText.getText().toString());
                     clipboardManager.setPrimaryClip(clipData);
 
-                    Toast.makeText(MainActivity.this,"Text Copy to Clipborad",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Word_File_Creation.this,"Text Copy to Clipborad",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 String text = recogText.getText().toString();
 
                 if(text.isEmpty()){
-                    Toast.makeText(MainActivity.this,"There is no Text to Copy!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Word_File_Creation.this,"There is no Text to Copy!",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     recogText.setText("-");
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImagePicker.Companion.with(MainActivity.this)
+                ImagePicker.Companion.with(Word_File_Creation.this)
                         .crop()	    			//Crop image(Optional), Check Customization for more option
                         .compress(1024)			//Final image size will be less than 1 MB(Optional)
                         .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
@@ -127,11 +127,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (user == null) {
-            startActivity(new Intent(MainActivity.this,Log_In.class));
+            startActivity(new Intent(Word_File_Creation.this,Log_In.class));
             finish();
         }
 
-        toggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.open, R.string.close);
+        toggle = new ActionBarDrawerToggle(Word_File_Creation.this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -143,22 +143,22 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent;
                 if(item.getItemId() ==  R.id.m_Home)
                 {
-                    makeText(MainActivity.this, "Clicked to Home", Toast.LENGTH_SHORT).show();
+                    makeText(Word_File_Creation.this, "Clicked to Home", Toast.LENGTH_SHORT).show();
                     drawerLayout.closeDrawers();
                 } else if (item.getItemId() ==  R.id.m_Profile) {
-                    makeText(MainActivity.this, "Personal Information", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(MainActivity.this,Recycle_view_of_Batch.class) ;
+                    makeText(Word_File_Creation.this, "Personal Information", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(Word_File_Creation.this,Recycle_view_of_Batch.class) ;
                     startActivity(intent);
 
                 }
                 else if (item.getItemId() ==  R.id.m_About_App) {
-                    makeText(MainActivity.this, "About App", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(MainActivity.this, MainActivity.class);
+                    makeText(Word_File_Creation.this, "About App", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(Word_File_Creation.this, Word_File_Creation.class);
                     startActivity(intent);
                 } else if ( item.getItemId() ==  R.id.mlog_out) {
                     firebaseAuth.signOut();
-                    makeText(MainActivity.this, "Log Out Successful.", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(MainActivity.this,Log_In.class) ;
+                    makeText(Word_File_Creation.this, "Log Out Successful.", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(Word_File_Creation.this,Log_In.class) ;
                     startActivity(intent);
                     finish();
                 }
@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode,resultCode,data);
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
     private void recognizeText() {
         if(imageUri!=null){
             try {
-                InputImage inputImage = InputImage.fromFilePath(MainActivity.this,imageUri);
+                InputImage inputImage = InputImage.fromFilePath(Word_File_Creation.this,imageUri);
 
                 Task<Text> result = textRecognizer.process(inputImage)
                         .addOnSuccessListener(new OnSuccessListener<Text>() {
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(MainActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Word_File_Creation.this, e.getMessage(),Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -222,58 +222,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-  /*
-                *  if(item.getItemId() ==  R.id.m_Home)
-                {
-                    makeText(MainActivity.this, "Clicked to Home", Toast.LENGTH_SHORT).show();
-                    drawerLayout.closeDrawers();
-                } else if (item.getItemId() ==  R.id.m_Profile) {
-                    makeText(MainActivity.this, "Personal Information", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(MainActivity.this,MainActivity.class) ;
-                    startActivity(intent);
-
-                }
-                else if (item.getItemId() ==  R.id.m_About_App) {
-                    makeText(MainActivity.this, "About App", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(MainActivity.this,MainActivity.class) ;
-                    startActivity(intent);
-                } else if ( item.getItemId() ==  R.id.mlog_out) {
-                    firebaseAuth.signOut();
-                    makeText(MainActivity.this, "Log Out Successful.", Toast.LENGTH_SHORT).show();
-                    intent = new Intent(MainActivity.this,Log_In.class) ;
-                    startActivity(intent);
-                    finish();
-                }
-                *
-                *  switch (item.getItemId()) {
-
-
-                    case R.id.m_Home:
-                        makeText(MainActivity.this, "Clicked to Home", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawers();
-                        break;
-
-                    case R.id.m_Profile:
-                        makeText(MainActivity.this, "Personal Information", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(MainActivity.this,MainActivity.class) ;
-                        startActivity(intent);
-                        break;
-
-                    case R.id.m_About_App:
-                        makeText(MainActivity.this, "About App", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(MainActivity.this,MainActivity.class) ;
-                        startActivity(intent);
-                        break;
-
-
-                    case R.id.mlog_out:
-                        firebaseAuth.signOut();
-                        makeText(MainActivity.this, "Log Out Successful.", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(MainActivity.this,Log_In.class) ;
-                        startActivity(intent);
-                        finish();
-                        break;
-                }
-                *
-                * */

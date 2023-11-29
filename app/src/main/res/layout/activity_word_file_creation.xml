@@ -31,7 +31,7 @@
                 android:layout_marginLeft="15dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="PDF Convertor"
+                android:text="Word File Convertor"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
