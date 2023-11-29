@@ -25,9 +25,6 @@ public class Features extends AppCompatActivity {
         setSingleEvent(gridLayout);
     }
 
-    ///feature activity
-    //knvompvmew
-
     private void setSingleEvent(GridLayout gridLayout) {
         for(int i=0 ; i<gridLayout.getChildCount();i++){
             CardView cardView = (CardView) gridLayout.getChildAt(i);
@@ -47,12 +44,12 @@ public class Features extends AppCompatActivity {
                     }
                     else if(Final_I == 2){
                         makeText(Features.this, "Attendance Calculating.", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Features.this, MainActivity.class);
+                        Intent intent = new Intent(Features.this, Attendance_Activity.class);
                         startActivity(intent);
                     }
                     else {
                         makeText(Features.this, "CT Mark Calculating.", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Features.this, MainActivity.class);
+                        Intent intent = new Intent(Features.this, Attendance_Activity.class);
                         startActivity(intent);
                     }
                 }
