@@ -36,6 +36,7 @@ public class SplashActivity extends AppCompatActivity {
         thread.start();
     }
 
+
     public  void doWork(){
         for(progress=20;progress<=100;progress=progress+20){
             try {
