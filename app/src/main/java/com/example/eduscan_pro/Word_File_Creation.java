@@ -6,15 +6,19 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -38,7 +42,12 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
 import java.io.IOException;
+import java.io.OutputStream;
 
 public class Word_File_Creation extends AppCompatActivity {
 
@@ -49,10 +58,12 @@ public class Word_File_Creation extends AppCompatActivity {
     ImageView imageMenu;
 
     FloatingActionButton camera,erase,copy;
+    Button Convert_DOC_button;
     EditText recogText;
     Uri imageUri;
     TextRecognizer textRecognizer;
     private FirebaseAuth firebaseAuth;
+    private String recognizerText;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -77,6 +88,8 @@ public class Word_File_Creation extends AppCompatActivity {
         camera = findViewById(R.id.Camera);
         copy = findViewById(R.id.Copy);
         recogText=findViewById(R.id.showdata);
+        Convert_DOC_button = findViewById(R.id.Convert_Doc);
+
 
         copy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +188,19 @@ public class Word_File_Creation extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        Convert_DOC_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String docInput = recogText.getText().toString().trim();
+                if (!docInput.isEmpty()) {
+                    createAndSaveDocxFile(docInput);
+                    Toast.makeText(Word_File_Creation.this, "DOCX creation initiated", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Word_File_Creation.this, "There is no text to create DOCX!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -205,7 +231,7 @@ public class Word_File_Creation extends AppCompatActivity {
                             @Override
                             public void onSuccess(Text text) {
 
-                                String recognizerText= text.getText();
+                                recognizerText= text.getText();
                                 recogText.setText(recognizerText);
 
                             }
@@ -221,4 +247,56 @@ public class Word_File_Creation extends AppCompatActivity {
             }
         }
     }
+
+
+    private final ActivityResultLauncher<Intent> createDocxLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        Uri uri = data.getData();
+                        if (uri != null) {
+                            try {
+                                String content = recogText.getText().toString().trim();
+                                createAndSaveDocx(this, uri, content);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                Toast.makeText(this, "Failed to save DOCX", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                }
+            });
+
+    private void createAndSaveDocx(Context context, Uri uri, String content) throws IOException {
+        XWPFDocument document = new XWPFDocument();
+
+        // Check if content is not empty before processing
+        if (!content.isEmpty()) {
+            XWPFParagraph paragraph = document.createParagraph();
+            XWPFRun run = paragraph.createRun();
+            run.setText(content);
+        }
+
+        // Write the document to the provided URI
+        OutputStream outputStream = context.getContentResolver().openOutputStream(uri);
+        document.write(outputStream);
+        document.close();
+        outputStream.close();
+        recogText.setText("");
+
+        Toast.makeText(context, "DOCX created and saved to Downloads", Toast.LENGTH_SHORT).show();
+    }
+
+    private void createAndSaveDocxFile(String content) {
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+        intent.putExtra(Intent.EXTRA_TITLE, "example.docx"); // Change the file name as needed
+        createDocxLauncher.launch(intent);
+
+    }
+
+
 }
