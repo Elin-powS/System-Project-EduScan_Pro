@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@color/mint_500"
+    android:background="@drawable/p"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,6 @@
         android:background="@color/mint_500"
 
         >
-
         <TextView
             android:id="@+id/textView6"
             android:layout_width="349dp"
