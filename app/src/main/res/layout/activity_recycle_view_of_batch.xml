@@ -17,7 +17,7 @@
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/teal_700"
+            android:background="@color/mint_700"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:paddingStart="5dp"
@@ -45,7 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_centerVertical="true"
-            android:foregroundGravity="center" />
+            android:foregroundGravity="center"
+            />
 
 
         <ImageView
@@ -67,7 +68,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="26dp"
             android:layout_marginRight="10dp"
-
             android:layout_marginBottom="40dp"
             android:foregroundGravity="center">
 
@@ -85,7 +85,7 @@
             android:layout_marginEnd="17dp"
             android:layout_marginRight="17dp"
             android:layout_marginBottom="9dp"
-            android:backgroundTint="@color/teal_700"
+            android:background="@color/mint_700"
             android:foregroundGravity="center"
             android:src="@drawable/baseline_add_24" />
     </RelativeLayout>
@@ -98,6 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/mint_700"
         app:headerLayout="@layout/drawar_head_layout"
         app:menu="@menu/navigation_menu_for_recycleview_batch"
         tools:ignore="MissingConstraints">

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/mint_500">
 
 
     <RelativeLayout
@@ -16,7 +17,7 @@
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/teal_700"
+            android:background="@color/mint_700"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:paddingStart="5dp"
@@ -38,28 +39,23 @@
 
         </LinearLayout>
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/inputsection"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/appBar"
-            android:layout_marginTop="11dp"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_above="@+id/Camera"
-            android:layout_below="@+id/inputsection">
+            android:layout_below="@+id/appBar"
+            android:background="@color/mint_500">
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp">
+                android:layout_margin="20dp"
+                android:background="@color/mint_500">
 
                 <EditText
                     android:id="@+id/showdata"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    />
 
 
             </androidx.cardview.widget.CardView>
@@ -89,7 +85,7 @@
             android:layout_marginEnd="182dp"
             android:layout_marginRight="182dp"
             android:layout_marginBottom="27dp"
-            android:backgroundTint="#5BB1F3"
+            android:backgroundTint="@color/mint_700"
             android:src="@drawable/baseline_camera_alt_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -104,7 +100,7 @@
             android:layout_marginEnd="317dp"
             android:layout_marginRight="317dp"
             android:layout_marginBottom="27dp"
-            android:backgroundTint="#5BB1F3"
+            android:backgroundTint="@color/mint_700"
             android:src="@drawable/baseline_phonelink_erase_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -119,7 +115,7 @@
             android:layout_marginEnd="38dp"
             android:layout_marginRight="38dp"
             android:layout_marginBottom="28dp"
-            android:backgroundTint="#5BB1F3"
+            android:backgroundTint="@color/mint_700"
             android:src="@drawable/baseline_content_copy_24" />
     </RelativeLayout>
 

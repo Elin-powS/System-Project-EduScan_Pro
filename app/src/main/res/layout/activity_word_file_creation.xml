@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
+    android:background="@color/mint_500"
     tools:context=".MainActivity">
 
 
@@ -16,7 +17,7 @@
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/teal_700"
+            android:background="@color/mint_700"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:paddingStart="5dp"
@@ -60,7 +61,7 @@
                 app:layout_constraintBottom_toTopOf="@id/Convert_PDF"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                tools:ignore="MissingConstraints"
+                tools:ignore="MissingConstraints,NotSibling"
                 tools:layout_editor_absoluteX="20dp">
 
                 <EditText
@@ -70,7 +71,8 @@
                     android:layout_margin="10dp"
                     android:gravity="start"
                     android:inputType="textMultiLine"
-                    android:scrollbars="vertical" />
+                    android:scrollbars="vertical"
+                    android:backgroundTint="@color/mint_700"/>
 
 
             </androidx.cardview.widget.CardView>
@@ -81,6 +83,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:text="Doc File"
+                android:background="@color/mint_700"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -108,7 +111,7 @@
             android:layout_marginEnd="182dp"
             android:layout_marginRight="182dp"
             android:layout_marginBottom="27dp"
-            android:backgroundTint="#5BB1F3"
+            android:backgroundTint="@color/mint_700"
             android:src="@drawable/baseline_camera_alt_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -123,7 +126,7 @@
             android:layout_marginEnd="317dp"
             android:layout_marginRight="317dp"
             android:layout_marginBottom="27dp"
-            android:backgroundTint="#5BB1F3"
+            android:backgroundTint="@color/mint_700"
             android:src="@drawable/baseline_phonelink_erase_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -138,7 +141,7 @@
             android:layout_marginEnd="38dp"
             android:layout_marginRight="38dp"
             android:layout_marginBottom="28dp"
-            android:backgroundTint="#5BB1F3"
+            android:backgroundTint="@color/mint_700"
             android:src="@drawable/baseline_content_copy_24" />
     </RelativeLayout>
 
