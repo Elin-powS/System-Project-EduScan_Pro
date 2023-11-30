@@ -56,13 +56,13 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="342dp"
-        android:layout_height="41dp"
-        android:text="Scan,Create,Manage:Your ultimate document companion EduScan"
+        android:layout_width="343dp"
+        android:layout_height="57dp"
+        android:text="Scan,Create,Manage:Your Ultimate Document Companion EduScan"
         android:textAlignment="center"
         android:textColor="@color/mint_700"
-        android:textSize="13dp"
-        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.623"
