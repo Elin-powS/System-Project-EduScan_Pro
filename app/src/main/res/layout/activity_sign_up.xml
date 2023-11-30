@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@color/mint_500"
+    android:background="@drawable/p"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,16 +21,15 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/app_logo"
+            android:layout_width="113dp"
+            android:layout_height="115dp"
+            android:background="@drawable/aa"
 
             app:layout_constraintBottom_toBottomOf="@+id/B3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.024" />
+            app:layout_constraintVertical_bias="0.052" />
 
         <TextView
             android:id="@+id/textView6"

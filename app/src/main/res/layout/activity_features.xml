@@ -14,12 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
-        android:text="Features"
+        android:text="Saves Your Valuable Time"
         android:textColor="@color/mint_700"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
     <GridLayout
         android:id="@+id/grid_layout"
@@ -50,14 +50,15 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:gravity="center"
         android:orientation="vertical">
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_content_copy_24"/>
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/v" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PDF"
+            android:text="PDF FILE"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textStyle="bold"></TextView>
@@ -90,13 +91,13 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_content_copy_24"/>
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/h"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WORD"
+                    android:text="DOC FILE"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"></TextView>
@@ -128,13 +129,13 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_content_copy_24"/>
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/f"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="AP"
+                    android:text="ATTENDANCE"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"></TextView>
@@ -162,13 +163,13 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_content_copy_24"/>
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/a"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CT"
+                    android:text="CSV FILE"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"></TextView>
