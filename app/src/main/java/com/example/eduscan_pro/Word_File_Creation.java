@@ -71,7 +71,7 @@ public class Word_File_Creation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_file_creation);
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(Word_File_Creation.this,R.color.teal_700));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Word_File_Creation.this,R.color.mint_700));
 
         //recyclerView = findViewById(R.id.recyclerView);
         //recyclerView.setLayoutManager(new LinearLayoutManager((this)));

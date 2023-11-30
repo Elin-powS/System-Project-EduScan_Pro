@@ -34,7 +34,7 @@ public class Log_In extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        getWindow().setStatusBarColor(ContextCompat.getColor(Log_In.this,R.color.teal_700));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Log_In.this,R.color.mint_700));
 
         Email = (EditText) findViewById(R.id.Email);
         password = (EditText) findViewById(R.id.password);

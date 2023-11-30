@@ -66,7 +66,7 @@ public class Recycle_view_of_Batch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view_of_batch);
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(Recycle_view_of_Batch.this,R.color.teal_700));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Recycle_view_of_Batch.this,R.color.mint_700));
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

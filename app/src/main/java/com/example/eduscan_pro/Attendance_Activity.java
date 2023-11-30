@@ -61,7 +61,7 @@ public class Attendance_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_attendance);
 
 
-        getWindow().setStatusBarColor(ContextCompat.getColor( Attendance_Activity .this,R.color.teal_700));
+        getWindow().setStatusBarColor(ContextCompat.getColor( Attendance_Activity .this,R.color.mint_700));
 
         //recyclerView = findViewById(R.id.recyclerView);
         //recyclerView.setLayoutManager(new LinearLayoutManager((this)));

@@ -3,9 +3,11 @@
     <item
         android:id="@+id/option_edit"
         android:drawableLeft="@drawable/baseline_edit_24"
-        android:title="Edit" />
+        android:title="Edit"
+        android:iconTint="@color/mint_700"/>
     <item
         android:id="@+id/option_delete"
         android:drawableLeft="@drawable/baseline_delete_24"
-        android:title="Delete" />
+        android:title="Delete"
+        android:iconTint="@color/mint_700"/>
 </menu>

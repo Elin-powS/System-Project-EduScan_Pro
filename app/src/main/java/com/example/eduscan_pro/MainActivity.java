@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.teal_700));
+        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.mint_700));
 
         //recyclerView = findViewById(R.id.recyclerView);
         //recyclerView.setLayoutManager(new LinearLayoutManager((this)));

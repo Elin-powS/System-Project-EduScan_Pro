@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 
 public class Features extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class Features extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_features);
+
+        getWindow().setStatusBarColor(ContextCompat.getColor( Features .this,R.color.mint_700));
 
         gridLayout = (GridLayout) findViewById(R.id.grid_layout);
 
