@@ -84,7 +84,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="25dp"
                 android:text="PDF"
-                android:background="@color/mint_700"
+                android:backgroundTint="@color/mint_700"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

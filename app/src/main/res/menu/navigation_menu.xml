@@ -4,17 +4,20 @@
         android:id="@+id/group1"
         android:checkableBehavior="single">
 
-        <item android:title="Task">
+        <item android:title="Task"
+            android:iconTint="@color/mint_700">
             <menu>
 
                 <item
                     android:id="@+id/m_Home"
                     android:icon="@drawable/baseline_menu_24"
-                    android:title="Home" />
+                    android:title="Home"
+                    android:iconTint="@color/mint_700"/>
 
                 <item
                     android:id="@+id/m_Profile"
                     android:icon="@drawable/baseline_menu_24"
+                    android:iconTint="@color/mint_700"
                     android:title="Profile" />
 
             </menu>
@@ -26,18 +29,21 @@
     <group
         android:id="@+id/group2"
         android:checkableBehavior="single">
-        <item android:title="More App">
+        <item android:title="More App"
+            android:iconTint="@color/mint_700">
 
             <menu>
 
                 <item
                     android:id="@+id/m_Policy"
                     android:icon="@drawable/baseline_menu_24"
-                    android:title="Policy" />
+                    android:title="Policy"
+                    android:iconTint="@color/mint_700"/>
                 <item
                     android:id="@+id/m_About_App"
                     android:icon="@drawable/baseline_menu_24"
-                    android:title="About App" />
+                    android:title="About App"
+                    android:iconTint="@color/mint_700"/>
             </menu>
 
         </item>
@@ -47,7 +53,8 @@
     <group
         android:id="@+id/group3"
         android:checkableBehavior="single">
-        <item android:title="Exit">
+        <item android:title="Exit"
+            android:iconTint="@color/mint_700">
 
             <menu>
 
@@ -55,7 +62,8 @@
                 <item
                     android:id="@+id/mlog_out"
                     android:icon="@drawable/baseline_logout_24"
-                    android:title="Log Out" />
+                    android:title="Log Out"
+                    android:iconTint="@color/mint_700"/>
             </menu>
 
         </item>

@@ -4,17 +4,20 @@
             android:id="@+id/group1"
             android:checkableBehavior="single">
 
-            <item android:title="Task">
+            <item android:title="Task"
+                android:iconTint="@color/mint_700">
                 <menu>
 
                     <item
                         android:id="@+id/m_Home_Recycle"
                         android:icon="@drawable/baseline_menu_24"
+                        android:iconTint="@color/mint_700"
                         android:title="Home" />
 
                     <item
                         android:id="@+id/m_Profile_Recycle"
                         android:icon="@drawable/baseline_menu_24"
+                        android:iconTint="@color/mint_700"
                         android:title="Semester Information" />
 
                 </menu>

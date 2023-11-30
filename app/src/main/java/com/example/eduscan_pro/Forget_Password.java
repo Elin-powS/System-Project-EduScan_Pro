@@ -1,10 +1,5 @@
 package com.example.eduscan_pro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -13,6 +8,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,7 +31,7 @@ public class Forget_Password extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(Forget_Password.this,R.color.teal_700));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Forget_Password.this,R.color.mint_700));
 
         email = (EditText) findViewById(R.id.email);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
