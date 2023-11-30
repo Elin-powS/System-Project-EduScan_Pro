@@ -40,32 +40,51 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/inputsection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/appBar"
-            android:layout_marginTop="11dp"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
             android:layout_above="@+id/Camera"
-            android:layout_below="@+id/inputsection">
+            android:layout_below="@+id/appBar"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="5dp"
+            android:foregroundGravity="center"
+            android:gravity="center">
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/output_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp">
+                android:layout_height="550dp"
+                android:layout_margin="12dp"
+                android:layout_marginBottom="5dp"
+                android:foregroundGravity="center"
+                app:layout_constraintBottom_toTopOf="@id/Convert_PDF"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="20dp">
 
                 <EditText
                     android:id="@+id/showdata"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:gravity="start"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="vertical" />
 
 
             </androidx.cardview.widget.CardView>
 
+            <Button
+                android:id="@+id/Convert_Doc"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:text="Doc File"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
         <ImageView
             android:id="@+id/imageMenu"
             android:layout_width="40dp"
